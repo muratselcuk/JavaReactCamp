@@ -10,20 +10,25 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(callSuper=false)
 @Data
-@Entity
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name="job_positions")
-public class JobPosition {
+@NoArgsConstructor
+@Entity
+@Table(name="admins")
+public class Admin extends User{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="title")
-	private String title; 
+	@Column(name="first_name")
+	private String firstName;
+	
+	@Column(name="last_name")
+	private String lastName;
 }

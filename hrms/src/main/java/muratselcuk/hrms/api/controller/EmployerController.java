@@ -9,33 +9,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import muratselcuk.hrms.business.abstracts.JobPositionService;
+import muratselcuk.hrms.business.abstracts.EmployerService;
 import muratselcuk.hrms.core.utilities.results.DataResult;
 import muratselcuk.hrms.core.utilities.results.Result;
-import muratselcuk.hrms.entities.concretes.JobPosition;
+import muratselcuk.hrms.entities.concretes.Employer;
 
 @RestController
-@RequestMapping("/api/jobpositions")
-public class JobPositionsController {
+@RequestMapping("/api/employers")
+public class EmployerController {
 
-	private JobPositionService jobPositionService;
-	
+	private EmployerService employerService;
+
 	@Autowired
-	public JobPositionsController(JobPositionService jobPositionService) {
+	public EmployerController(EmployerService employerService) {
 		super();
-		this.jobPositionService = jobPositionService;
+		this.employerService = employerService;
 	}
-
-
-
-	@GetMapping("/getall")
-	public DataResult<List<JobPosition>> getAll(){
-		return this.jobPositionService.getAll();
+	
+	@GetMapping
+	public DataResult<List<Employer>> getAll(){
+		return this.employerService.getAll();
 	}
 	
 	@PostMapping
-	public Result add(@RequestBody JobPosition jobPosition) {
-		return this.jobPositionService.add(jobPosition);
+	public Result add(@RequestBody Employer employer) {
+		return this.employerService.add(employer);
 	}
-
 }
